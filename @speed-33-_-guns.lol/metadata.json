@@ -1,0 +1,6 @@
+{
+  "name": "@OMAR33 | guns.lol",
+  "description": "OMAR33",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="notranslate ltr en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@OMAR33 | guns.lol</title>
+    <meta name="description" content="OMAR33" />
+    <meta name="application-name" content="guns.lol" />
+    <meta name="author" content="@OMAR33 | guns.lol" />
+    <meta name="theme-color" content="#080808" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="shortcut icon" href="/favicon.png" />
+    <meta property="og:title" content="@OMAR33 | guns.lol" />
+    <meta property="og:description" content="OMAR33" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="@OMAR33 | guns.lol" />
+    <meta name="twitter:description" content="OMAR33" />
+    <!-- Ultra fast preloading for background and logo -->
+    <link rel="preload" as="image" href="/assets/omar33_bg.webp" type="image/webp" />
+    <link rel="preload" as="image" href="/assets/omar33_logo.webp" type="image/webp" />
+    <link rel="preload" as="image" href="/assets/avatar_decoration_wings.webp" type="image/webp" />
+    <style>
+      #initial-entry-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      #initial-entry-text {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 30px;
+        font-weight: 700;
+        color: #fafafa;
+        letter-spacing: 0.02em;
+        text-align: center;
+        padding: 0 10px;
+      }
+    </style>
+  </head>
+  <body class="bg-[#080808] text-white selection:bg-white selection:text-[#080808] overflow-x-hidden m-0 p-0">
+    <div id="root">
+      <!-- Instant First-Frame Entry Overlay -->
+      <div id="initial-entry-overlay">
+        <div id="initial-entry-text">click to enter...</div>
+      </div>
+    </div>
+    <script>
+      window.__entered = false;
+      document.addEventListener('click', function onFirstClick() {
+        var el = document.getElementById('initial-entry-overlay');
+        if (el) {
+          el.style.opacity = '0';
+          el.style.pointerEvents = 'none';
+          setTimeout(function() {
+            if (el && el.parentNode) el.parentNode.removeChild(el);
+          }, 150);
+          window.__entered = true;
+          window.dispatchEvent(new Event('app:entered'));
+        }
+      }, { once: true });
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
